@@ -77,6 +77,10 @@ async def get_beneficiary_birthday(update: Update, context: ContextTypes.DEFAULT
     )
     return PLAN_TYPE
 
+    async def get_plan_type(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    context.user_data['نوع طرح'] = update.message.text
+
+
     # ساخت خلاصه اطلاعات برای ادمین
     text = "📄 فرم جدید:\n\n"
     for key, value in context.user_data.items():
