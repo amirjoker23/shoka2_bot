@@ -70,6 +70,13 @@ async def get_beneficiary_id(update: Update, context: ContextTypes.DEFAULT_TYPE)
 async def get_beneficiary_birthday(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data['تاریخ تولد ذینفع'] = update.message.text
 
+    keyboard = [['ماهانه', 'سالانه', 'یکجا']]
+    await update.message.reply_text(
+        "💳 کدام یک از طرح‌ها را انتخاب می‌کنید؟",
+        reply_markup=ReplyKeyboardMarkup(keyboard, one_time_keyboard=True, resize_keyboard=True),
+    )
+    return PLAN_TYPE
+
     # ساخت خلاصه اطلاعات برای ادمین
     text = "📄 فرم جدید:\n\n"
     for key, value in context.user_data.items():
